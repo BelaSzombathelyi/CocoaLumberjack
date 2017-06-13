@@ -30,3 +30,8 @@
         DDLogError(@"%@", description);                                           \
         NSAssert(NO, description);                                                \
     }
+
+#define DDAssertFail(frmt, ...) \
+  NSString *description = [@"[DDAssertFail] " stringByAppendingString:[NSString stringWithFormat:frmt, ## __VA_ARGS__]]; \
+  DDLogError(@"%@", description);                                           \
+  NSAssert(NO, description);
