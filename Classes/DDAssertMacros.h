@@ -35,3 +35,11 @@
   NSString *description = [@"[DDAssertFail] " stringByAppendingString:[NSString stringWithFormat:frmt, ## __VA_ARGS__]]; \
   DDLogError(@"%@", description);                                           \
   NSAssert(NO, description);
+
+
+#define DDAssertNotMainThread() \
+  if (!NSThread.currentThread.isMainThread) {                                                           \
+    NSString *description = @"[DDAssertMainThread] It does not run on main thread!"; \
+    DDLogError(@"%@", description);                                           \
+    NSAssert(NO, description);                                                \
+}
